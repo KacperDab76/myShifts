@@ -1,6 +1,21 @@
 body
 {
-    background-color:burlywood;
-    color: green;
+    background-color:rgb(164, 153, 184);
+    color: rgb(120, 5, 13);
     text-align: center;
+    size: 30px;
+    font-weight: bold;
+}
+
+td{
+    border: solid  rgb(104, 88, 88);
+    padding: 1px 15px;
+    margin: 2px;
+    background-color: rgb(135, 192, 222);
+}
+
+td.today
+{
+    background-color:darkgoldenrod;
+    font-weight: bolder;
 }
