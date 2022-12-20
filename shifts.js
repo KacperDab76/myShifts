@@ -72,7 +72,7 @@ function showShift(day) {
             index = 8+index;
         }
         table += "<td>"+ workers[index]+"</td>";
-        table += "<td>"+ shiftKey[shiftsWeek[i][dayOfWeek]]+"</td>";
+        table += "<td class='"+shiftsWeek[i][dayOfWeek]+"'>"+ shiftKey[shiftsWeek[i][dayOfWeek]]+"</td>";
         table += "</tr>";
     }
     table += "</table>";
@@ -110,17 +110,17 @@ function showShift(day) {
             table += "<td>"+ workers[index]+"</td>";
             for (j=0;j<shiftsWeek[i].length;j++){
                 if (j == dayOfWeek){
-                    table += "<td class='today'>";
+                    table += "<td class='today "+shiftsWeek[i][j]+"'>";
                 } 
                 else {
-                    table += "<td>";
+                    table += "<td class='"+shiftsWeek[i][j]+"'>";
                 }          
                 table += shiftKey[shiftsWeek[i][j]]+"</td>";
             }
             table += "</tr>";
         }
         table += "</table>";
-        document.getElementById("info").innerHTML += table;
+        document.getElementById("week").innerHTML += table;
 }
     
 function newDay() {
