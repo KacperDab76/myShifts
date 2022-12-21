@@ -11,7 +11,7 @@ td{
     border: solid  rgb(216, 242, 254);
     padding: 1px 15px;
     margin: 2px;
-    background-color: rgb(135, 192, 222);
+    /* background-color: rgb(135, 192, 222); */
 }
 
 td.today
@@ -21,11 +21,16 @@ td.today
     border-color: blue;
 }
 
+.names
+{
+    background-color:burlywood;
+}
  
 .R{ background-color: rgb(216, 250, 226);}
 .D1,.D2,.D3{ background-color: lemonchiffon;}    
 .P1 { background-color: darkseagreen;}
 .P2 {background-color: rgb(136, 187, 136);}
+.L1,.L2,.L3,.L4,.L5 {background-color: rgb(135, 192, 222);}
 
 #week 
 {
