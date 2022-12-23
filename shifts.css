@@ -21,6 +21,21 @@ td.today
     border-color: blue;
 }
 
+.t-button
+{
+    /* border-left: solid 2px green;
+    border-left: solid 2px green; */
+    border-top: solid 2px green;
+    border-bottom: solid 2px green;
+
+    border-radius: 10px;
+}
+.t-button:hover
+{
+    border: solid 2px goldenrod;
+    border-radius: 10px;
+}
+
 .names
 {
     background-color:burlywood;
@@ -32,13 +47,32 @@ td.today
 .P2 {background-color: rgb(136, 187, 136);}
 .L1,.L2,.L3,.L4,.L5 {background-color: rgb(135, 192, 222);}
 
-#week 
+.blackWhite
 {
-    display: none;
+    color: black;
+    background-color: white;
+    margin:0px;
+    border: solid black;
 }
 
-/* @media screen and (orientation: landscape)
+#container
+{
+    display: flex;
+    flex-direction: row;
+}
+/* #week 
+{
+    display: none;
+} */
+
+@media screen and (max-width: 1200px)
 {
     #week {display: block;}
     #info {display: none;}
-} */
+} 
+
+@media screen and (max-width: 700px)
+{
+    #week {display: none;}
+    #info {display: block;}
+} 

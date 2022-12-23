@@ -41,15 +41,25 @@ const shiftKey = {
         ["Fri","Friday"],
         ["Sat","Saturday"]
     ];
+
+let showDate;
+
+function dateToString(date){
+    return  date.toISOString().slice(0,10);
+
+}
 /**
  * Function checks today's date and sets up input:date element to it
  */
 function start()
 {
     const today = new Date();
-    document.getElementById("shiftDate").value = today.toISOString().slice(0,10);
-
+    showDate = dateToString(today);
+    document.getElementById("shiftDate").value = showDate;
+     
     showShift(today.toISOString().slice(0,10));
+    // attach event listeners
+    document.getElementById("shiftDate").addEventListener("change",setNewDay);
 }
 
 // getDay() retruns day of week 0-6
@@ -168,7 +178,7 @@ function showShift(day) {
 let tableColors = ["BW","C1"];
 //BW - black and whites
 //mode 0: day, 1: week
-function showEverything(day,divId,color=1,mode=1) {
+function showEverything(divId,day=showDate,color=1,mode=1) {
     
     /**the thing */
         const start = new Date(startingDate);
@@ -194,14 +204,17 @@ function showEverything(day,divId,color=1,mode=1) {
         // create headers
         table += "<tr>";
         table += "<th>Name</th>";
-        for (let i=0;i<7;i++){
+        let startLoop = 0;
+        let endLoop = 7;
+        for (let i=startLoop;i<endLoop;i++){
             let dateForDay = new Date();
-             
+            console.log(i,startLoop,endLoop); 
             if(mode == 1) {
-                dateForDay.setDate(sunday.getDate()+i);                
-                table += "<th>";
+                dateForDay.setDate(sunday.getDate()+i);
+                date = dateToString(dateForDay);                
+                table += '<th class="t-button" onclick="newDay(\''+date+'\');">';
                 table += weekDays[i][1]+"<br>";
-                table += dateForDay.toISOString().slice(0,10);
+                table += date;
                 table += "</th>";
             }    
         }
@@ -213,13 +226,17 @@ function showEverything(day,divId,color=1,mode=1) {
             if (index < 0){
                 index = 8+index;
             }
-            table += "<td>"+ workers[index]+"</td>";
+            table += "<td class='t-button'>"+ workers[index]+"</td>";
             for (j=0;j<shiftsWeek[i].length;j++){
+                let colorClass = shiftsWeek[i][j];
+                if (color == 0) {
+                    colorClass = "blackWhite";
+                }
                 if (j == dayOfWeek){
-                    table += "<td class='today "+shiftsWeek[i][j]+"'>";
+                    table += "<td class='today "+colorClass+"'>";
                 } 
                 else {
-                    table += "<td class='"+shiftsWeek[i][j]+"'>";
+                    table += "<td class='"+colorClass+"'>";
                 }          
                 table += shiftKey[shiftsWeek[i][j]]+"</td>";
             }
@@ -230,9 +247,16 @@ function showEverything(day,divId,color=1,mode=1) {
         targetDiv.style.display = "block";
 
 }
-function newDay() {
+
+function setNewDay() {
     let day = document.getElementById("shiftDate").value;
+    newDay(day);
+}
+function newDay(day) {
     showShift(day);
-    showShiftWeek(day);
+    // showShiftWeek(day);
+    showDate = day;
+    showEverything("week",day,0,1);
     
 }
+

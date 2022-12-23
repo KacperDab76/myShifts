@@ -13,14 +13,17 @@
         <form action="" onsubmit="return false;" class="">
             <label for="shiftDate">Day</label>
             <input type="date" name="shiftDate" id="shiftDate" />
-            <button onclick="newDay();"> Show Shift</button>
+            <button onclick="setNewDay();"> Show Shift</button>
             
         </form>
     </div>
-    <div id="info">
-        day
+    <div id="container">
+
+        <div id="info">
+            day
+        </div>
+        <div id="week">week</div>
+        <script src="shifts.js"></script>
     </div>
-    <div id="week">week</div>
-    <script src="shifts.js"></script>
 </body>
 </html>
