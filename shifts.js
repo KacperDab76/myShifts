@@ -195,10 +195,12 @@ function showEverything(divId,day=showDate,color=1,mode=1) {
         const dayOfWeek=day0.getDay();
         // day of week , Sun is 0 [0] is short [1] is long
         const nameOfDay = weekDays[dayOfWeek];
-        targetDiv.innerHTML = "<br>"+day+nameOfDay[1];   // 0 is short 1 is long
+        targetDiv.innerHTML = "<br>"+day+" : "+nameOfDay[1];   // 0 is short 1 is long
 
-        let sunday = new Date();
+        let sunday = new Date(day);
+        // console.log(sunday);
         sunday.setDate(day0.getDate()-dayOfWeek);
+        // console.log(sunday);
         
         let table = "<table>";
         // create headers
@@ -208,7 +210,7 @@ function showEverything(divId,day=showDate,color=1,mode=1) {
         let endLoop = 7;
         for (let i=startLoop;i<endLoop;i++){
             let dateForDay = new Date();
-            console.log(i,startLoop,endLoop); 
+            // console.log(i,startLoop,endLoop); 
             if(mode == 1) {
                 dateForDay.setDate(sunday.getDate()+i);
                 date = dateToString(dateForDay);                
@@ -256,7 +258,7 @@ function newDay(day) {
     showShift(day);
     // showShiftWeek(day);
     showDate = day;
-    showEverything("week",day,0,1);
+    showEverything("week",day,1,1);
     
 }
 

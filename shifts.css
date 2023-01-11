@@ -7,6 +7,17 @@ body
     font-weight: bold;
 }
 
+tr 
+{
+    border: solid  rgb(216, 242, 254);
+
+}
+tr:hover 
+{
+    border-color: red;
+    background-color: aquamarine;
+}
+
 td{
     border: solid  rgb(216, 242, 254);
     padding: 1px 15px;
@@ -16,6 +27,7 @@ td{
 
 td.today
 {
+    
     /* background-color:darkgoldenrod; */
     /* font-weight: bolder; */
     border-color: blue;
