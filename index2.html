@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shifts</title>
+    
+    <link rel="stylesheet" href="shifts.css" />
+</head>
+<body onload="start();">
+    <div id="form">
+        <form action="" onsubmit="return false;" class="">
+            <label for="shiftDate">Day</label>
+            <input type="date" name="shiftDate" id="shiftDate" />
+            <button onclick="setNewDay();"> Show Shift</button>
+            
+        </form>
+        <div class="round" id='black'></div>
+        <div id="color1" class="round"></div>
+    </div>
+    <div id="container">
+
+        <div id="info">
+            day
+        </div>
+        <div id="week">week</div>
+        <script src="shifts.js"></script>
+    </div>
+</body>
+</html>
