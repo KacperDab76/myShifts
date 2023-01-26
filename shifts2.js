@@ -141,7 +141,7 @@ function showShift(day) {
         let table = "<table>";
         // create headers
         table += "<tr>";
-        table += "<th>Name</th>";
+        table += "<th>Shift</th>";
         for (let i=0;i<7;i++){
             let dateForDay = new Date();
             dateForDay.setDate(sunday.getDate()+i);                
@@ -168,6 +168,7 @@ function showShift(day) {
                 }          
                 table += shiftKey[shiftsWeek[i][j]]+"</td>";
             }
+           
             table += "</tr>";
         }
         table += "</table>";
@@ -211,7 +212,7 @@ function showEverything(divId,day=showDate,color=1,mode=1) {
         let table = "<table>";
         // create headers
         table += "<tr>";
-        table += "<th>Name</th>";
+        table += "<th>Shift</th>";
         let startLoop = 0;
         let endLoop = 7;
         for (let i=startLoop;i<endLoop;i++){
@@ -234,7 +235,7 @@ function showEverything(divId,day=showDate,color=1,mode=1) {
             if (index < 0){
                 index = 8+index;
             }
-            table += "<td class='t-button'>"+ workers[index]+"</td>";
+            table += "<td class='t-button'>"+ (i+1)+"</td>";
             for (j=0;j<shiftsWeek[i].length;j++){
                 let colorClass = shiftsWeek[i][j];
                 if (color == 0) {
@@ -248,6 +249,7 @@ function showEverything(divId,day=showDate,color=1,mode=1) {
                 }          
                 table += shiftKey[shiftsWeek[i][j]]+"</td>";
             }
+             
             table += "</tr>";
         }
         table += "</table>";
