@@ -60,7 +60,7 @@ function start()
     showDate = dateToString(today);
     document.getElementById("shiftDate").value = showDate;
      
-    showShift(today.toISOString().slice(0,10));
+    //showShift(today.toISOString().slice(0,10));
     // attach event listeners
     document.getElementById("shiftDate").addEventListener("change",setNewDay);
     document.getElementById("black").addEventListener("click",showInBlack);
@@ -270,7 +270,7 @@ function showInColor1() {
 }
 
 function newDay(day) {
-    showShift(day);
+    //showShift(day);
     // showShiftWeek(day);
     showDate = day;
     showEverything("week",day,1,1);
