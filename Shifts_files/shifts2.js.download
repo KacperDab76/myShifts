@@ -60,7 +60,7 @@ function start()
     showDate = dateToString(today);
     document.getElementById("shiftDate").value = showDate;
      
-    //showShift(today.toISOString().slice(0,10));
+    showShift(today.toISOString().slice(0,10));
     // attach event listeners
     document.getElementById("shiftDate").addEventListener("change",setNewDay);
     document.getElementById("black").addEventListener("click",showInBlack);
@@ -202,7 +202,6 @@ function showEverything(divId,day=showDate,color=1,mode=1) {
         const dayOfWeek=day0.getDay();
         // day of week , Sun is 0 [0] is short [1] is long
         const nameOfDay = weekDays[dayOfWeek];
-        console.log("show me"+day0);
         targetDiv.innerHTML = "<br>"+day+" : "+nameOfDay[1];   // 0 is short 1 is long
 
         let sunday = new Date(day);
@@ -272,7 +271,7 @@ function showInColor1() {
 
 function newDay(day) {
     showShift(day);
-    //showShiftWeek(day);
+    // showShiftWeek(day);
     showDate = day;
     showEverything("week",day,1,1);
     

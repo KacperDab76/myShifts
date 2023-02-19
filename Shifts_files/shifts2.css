@@ -1,0 +1,111 @@
+body
+{
+    background-color:rgb(216, 242, 254);
+    color: rgb(120, 5, 13);
+    text-align: center;
+    size: 30px;
+    font-weight: bold;
+}
+
+tr 
+{
+    border: solid  rgb(216, 242, 254);
+
+}
+tr:hover 
+{
+    border-color: red;
+    background-color: aquamarine;
+}
+
+td{
+    border: solid  rgb(216, 242, 254);
+    padding: 1px 15px;
+    margin: 2px;
+    /* background-color: rgb(135, 192, 222); */
+}
+
+td.today
+{
+    
+    /* background-color:darkgoldenrod; */
+    /* font-weight: bolder; */
+    /* border-color: blue; */
+}
+
+.t-button
+{
+    /* border-left: solid 2px green;
+    border-left: solid 2px green; */
+    border-top: solid 2px green;
+    border-bottom: solid 2px green;
+
+    border-radius: 10px;
+}
+.t-button:hover
+{
+    border: solid 2px goldenrod;
+    border-radius: 10px;
+}
+
+.names
+{
+    background-color:burlywood;
+}
+ 
+.R{ background-color: rgb(148, 244, 75);}
+.D1,.D2,.D3,.D4{ background-color: rgb(253, 213, 93);}    
+.P1 { background-color: darkseagreen;}
+.P2 {background-color: rgb(136, 187, 136);}
+.L1,.L2,.L3,.L4,.L5,.L6 {background-color: rgb(135, 192, 222);}
+
+.blackWhite
+{
+    color: black;
+    background-color: white;
+    margin:0px;
+    border: solid black;
+}
+
+#container
+{
+    display: flex;
+    flex-direction: row;
+}
+/* #week 
+{
+    display: none;
+} */
+
+/* round buttons */
+
+.round
+{
+    /* background-color: blue; */
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+#black
+{
+    background-color: black;
+}
+
+#color1
+{
+    background-color: blueviolet;
+}
+
+#info {display: none;}
+@media screen and (max-width: 1200px)
+{
+    #week {display: block;}
+    #info {display: none;}
+} 
+
+@media screen and (max-width: 700px)
+{
+    #week {display: none;}
+    #info {display: block;}
+} 

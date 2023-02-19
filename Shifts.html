@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)file:///C:/Users/kacpe/Documents/Coding/ShiftsHTML/newSh.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shifts</title>
+    
+    <!-- <link rel="stylesheet" href="./Shifts_files/shifts2.css"> -->
+    <style>
+        body
+{
+    background-color:rgb(216, 242, 254);
+    color: rgb(120, 5, 13);
+    text-align: center;
+    size: 30px;
+    font-weight: bold;
+}
+
+tr 
+{
+    border: solid  rgb(216, 242, 254);
+
+}
+tr:hover 
+{
+    border-color: red;
+    background-color: aquamarine;
+}
+
+td{
+    border: solid  rgb(216, 242, 254);
+    padding: 1px 15px;
+    margin: 2px;
+    /* background-color: rgb(135, 192, 222); */
+}
+
+td.today
+{
+    
+    /* background-color:darkgoldenrod; */
+    /* font-weight: bolder; */
+    /* border-color: blue; */
+}
+
+.t-button
+{
+    /* border-left: solid 2px green;
+    border-left: solid 2px green; */
+    border-top: solid 2px green;
+    border-bottom: solid 2px green;
+
+    border-radius: 10px;
+}
+.t-button:hover
+{
+    border: solid 2px goldenrod;
+    border-radius: 10px;
+}
+
+.names
+{
+    background-color:burlywood;
+}
+ 
+.R{ background-color: rgb(148, 244, 75);}
+.D1,.D2,.D3,.D4{ background-color: rgb(253, 213, 93);}    
+.P1 { background-color: darkseagreen;}
+.P2 {background-color: rgb(136, 187, 136);}
+.L1,.L2,.L3,.L4,.L5,.L6 {background-color: rgb(135, 192, 222);}
+
+.blackWhite
+{
+    color: black;
+    background-color: white;
+    margin:0px;
+    border: solid black;
+}
+
+#container
+{
+    display: flex;
+    flex-direction: row;
+}
+/* #week 
+{
+    display: none;
+} */
+
+/* round buttons */
+
+.round
+{
+    /* background-color: blue; */
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+#black
+{
+    background-color: black;
+}
+
+#color1
+{
+    background-color: blueviolet;
+}
+
+#info {display: none;}
+    </style>
+</head>
+<body onload="start();">
+    <div id="form">
+        <form action="file:///C:/Users/kacpe/Documents/Coding/ShiftsHTML/newSh.html" onsubmit="return false;" class="">
+            <label for="shiftDate">Day</label>
+            <input type="date" name="shiftDate" id="shiftDate">
+            <button onclick="setNewDay();"> Show Shift</button>
+            
+        </form>
+        <div class="round" id="black"></div>
+        <div id="color1" class="round"></div>
+    </div>
+    <div id="container">
+
+        <div id="info"><br>2023-01-26 Thursday<table><colgroup><col class="names"><col></colgroup><tbody><tr><th>Name</th><th>2023-01-26<br>Thu</th></tr><tr></tr><tr><td>worker5</td><td class="L1">19.00-3.00</td></tr><tr><td>worker6</td><td class="R">Rest Day</td></tr><tr><td>worker7</td><td class="L6">17.00-3.00</td></tr><tr><td>worker8</td><td class="R">Rest Day</td></tr><tr><td>worker1</td><td class="R">Rest Day</td></tr><tr><td>worker2</td><td class="L2">18.00-3.00</td></tr><tr><td>worker3</td><td class="L6">17.00-3.00</td></tr><tr><td>worker4</td><td class="D3">10.00-17.00</td></tr><tr><td>worker5</td><td class="D2">7.00-14.00</td></tr></tbody></table></div>
+        <div id="week" style="display: block;"><br>2023-01-26 : Thursday<table><tbody><tr><th>Shift</th><th class="t-button" onclick="newDay(&#39;2023-01-22&#39;);">Sunday<br></th><th class="t-button" onclick="newDay(&#39;2023-01-23&#39;);">Monday<br></th><th class="t-button" onclick="newDay(&#39;2023-01-24&#39;);">Tuesday<br></th><th class="t-button" onclick="newDay(&#39;2023-01-25&#39;);">Wednesday<br></th><th class="t-button" onclick="newDay(&#39;2023-01-26&#39;);">Thursday<br></th><th class="t-button" onclick="newDay(&#39;2023-01-27&#39;);">Friday<br></th><th class="t-button" onclick="newDay(&#39;2023-01-28&#39;);">Saturday<br></th></tr><tr><td class="t-button">1</td><td class="R">Rest Day</td><td class="L1">19.00-3.00</td><td class="L1">19.00-3.00</td><td class="L1">19.00-3.00</td><td class="today L1">19.00-3.00</td><td class="R">Rest Day</td><td class="D1">8.00-17.00</td></tr><tr><td class="t-button">2</td><td class="L2">18.00-3.00</td><td class="R">Rest Day</td><td class="L2">18.00-3.00</td><td class="L2">18.00-3.00</td><td class="today R">Rest Day</td><td class="D4">10.00-15.00</td><td class="L2">18.00-3.00</td></tr><tr><td class="t-button">3</td><td class="R">Rest Day</td><td class="R">Rest Day</td><td class="L6">17.00-3.00</td><td class="L6">17.00-3.00</td><td class="today L6">17.00-3.00</td><td class="L2">18.00-3.00</td><td class="R">Rest Day</td></tr><tr><td class="t-button">4</td><td class="L6">17.00-3.00</td><td class="L6">17.00-3.00</td><td class="R">Rest Day</td><td class="R">Rest Day</td><td class="today R">Rest Day</td><td class="L6">17.00-3.00</td><td class="L2">18.00-3.00</td></tr><tr><td class="t-button">5</td><td class="L6">17.00-3.00</td><td class="L6">17.00-3.00</td><td class="R">Rest Day</td><td class="R">Rest Day</td><td class="today R">Rest Day</td><td class="L6">17.00-3.00</td><td class="L2">18.00-3.00</td></tr><tr><td class="t-button">6</td><td class="L2">18.00-3.00</td><td class="L6">17.00-3.00</td><td class="L6">17.00-3.00</td><td class="R">Rest Day</td><td class="today L2">18.00-3.00</td><td class="R">Rest Day</td><td class="R">Rest Day</td></tr><tr><td class="t-button">7</td><td class="R">Rest Day</td><td class="R">Rest Day</td><td class="R">Rest Day</td><td class="L6">17.00-3.00</td><td class="today L6">17.00-3.00</td><td class="L6">17.00-3.00</td><td class="L6">17.00-3.00</td></tr><tr><td class="t-button">8</td><td class="R">Rest Day</td><td class="D3">10.00-17.00</td><td class="D3">10.00-17.00</td><td class="D3">10.00-17.00</td><td class="today D3">10.00-17.00</td><td class="D1">8.00-17.00</td><td class="R">Rest Day</td></tr><tr><td class="t-button">9</td><td class="D1">8.00-17.00</td><td class="D2">7.00-14.00</td><td class="D2">7.00-14.00</td><td class="D2">7.00-14.00</td><td class="today D2">7.00-14.00</td><td class="R">Rest Day</td><td class="R">Rest Day</td></tr></tbody></table></div>
+        <!-- <script src="./Shifts_files/shifts2.js.download"></script> -->
+    </div>
+
+</body></html>
