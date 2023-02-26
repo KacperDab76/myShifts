@@ -79,6 +79,16 @@ function showShift(day) {
     document.getElementById("info").innerHTML += table;
 }
 
+function calcWeekNo(day0){
+        const start = new Date(startingDate);
+        let diff = day0.getTime() - start.getTime();
+        let days = diff/(1000*60*60*24);
+        let weeks = Math.floor(days/7);
+        let weekNo = weeks%8;
+
+        return weekNo;
+}
+
 /**function 
  * shows whole week
  */
@@ -86,19 +96,15 @@ function showShift(day) {
  function showShiftWeek(day) {
     
     /**tryouts */
-        const start = new Date(startingDate);
+        
         let day0 = new Date(day);
-        let diff = day0.getTime() - start.getTime();
-        let days = diff/(1000*60*60*24);
-        let weeks = Math.floor(days/7);
-        let weekNo = weeks%8;
+        let weekNo = calcWeekNo(day0);
         // let key="P2";
         // document.getElementById("info").innerHTML += shiftKey[key];
         // document.getElementById("info").innerHTML += "<br>"+days+" : "+weeks+" : "+weekNo;
         document.getElementById("info").innerHTML = "<br>"+day;
     
         const dayOfWeek=day0.getDay();
-        
         let table = "<table>";
         for (i=0;i<shiftsWeek.length;i++){
             table += "<tr>";
@@ -120,9 +126,12 @@ function showShift(day) {
             table += "</tr>";
         }
         table += "</table>";
-        document.getElementById("week").innerHTML += table;
+        document.getElementById("week").innerHTML = table;
+        targetDiv.style.display = "block";
+
 }
     
+/** Method triggered by form (button or change of date) */
 function newDay() {
     let day = document.getElementById("shiftDate").value;
     showShift(day);

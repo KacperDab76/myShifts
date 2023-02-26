@@ -27,13 +27,30 @@ td.today
 .P1 { background-color: darkseagreen;}
 .P2 {background-color: rgb(136, 187, 136);}
 
+.round
+{
+    /* background-color: blue; */
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+#black
+{
+    background-color: black;
+}
+
+#color1
+{
+    background-color: blueviolet;
+}
 #week 
 {
     display: none;
 }
 
-/* @media screen and (orientation: landscape)
+/* /* */
+ @media screen and (orientation: landscape)
 {
     #week {display: block;}
     #info {display: none;}
-} */
+}/* */
