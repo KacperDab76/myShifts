@@ -1,0 +1,14 @@
+whatIsit.text
+
+pierwsza strona to tylko kto robi dzis
+color/black&white
+linki do nasteonych stron
+
+//// 
+2. week z wyborem daty 
+colory
+i to wszytko?
+
+3. week podzielony na dni, pokazuje jeden dzien ? ze strzalkami
+
+4. to samo tylko z bootstrapem panele jeden pod drugim

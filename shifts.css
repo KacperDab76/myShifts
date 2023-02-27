@@ -49,8 +49,20 @@ td.today
 }
 
 /* /* */
- @media screen and (orientation: landscape)
-{
+ /* @media screen and (orientation: landscape) */
+
+@media screen and (max-width: 460px)
+ {
+    #week {display: none;}
+    #info {display: block;}
+}/* */
+@media screen and (max-width: 860px)
+ {
     #week {display: block;}
     #info {display: none;}
-}/* */
+}
+@media screen and (max-width: 2000px)
+ {
+    #week {display: block;}
+    #info {display: block;}
+}
