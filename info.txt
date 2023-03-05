@@ -2,8 +2,7 @@ whatIsit.text
 
 pierwsza strona to tylko kto robi dzis
 color/black&white
-linki do nasteonych stron
-
+linki do nastepnych stron
 //// 
 2. week z wyborem daty 
 colory
