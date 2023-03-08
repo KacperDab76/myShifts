@@ -236,6 +236,21 @@ function showEverything(divId,day=showDate,color=1,mode=1) {
 
 }
 
+// I need 2 functions
+// or more >
+// second creates HTML Table from array or array of objects
+// and first is a class of functions that creates that array
+// for 1 day or a week or fofr one week of worker
+
+function createHTMLTable(tabelka){
+    let myTable  = "<table>";
+    // needs TH headers part
+    
+
+    myTable += "</table>";
+    return myTable;
+}
+
 function setNewDay() {
     let day = document.getElementById("shiftDate").value;
     newDay(day);
