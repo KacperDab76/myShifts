@@ -1,7 +1,8 @@
 body
 {
     background-color:rgb(216, 242, 254);
-    color: rgb(120, 5, 13);
+    /* color: rgb(120, 5, 13); */
+    color: black;
     text-align: center;
     size: 30px;
     font-weight: bold;
@@ -24,8 +25,24 @@ td.today
  
 .R{ background-color: rgb(216, 250, 226);}
 .D1,.D2,.D3{ background-color: lemonchiffon;}    
-.P1 { background-color: darkseagreen;}
+.P1 { background-color: darkseagreen;color: rgb(152, 52, 52)}
 .P2 {background-color: rgb(136, 187, 136);}
+
+.R-light{ background-color: rgb(216, 250, 226);}
+.D1-light,.D2-light,.D3-light{ 
+    background-color: rgb(230, 232, 178);
+}    
+.P1-light { background-color: rgb(216, 250, 226);}
+.P2-light {background-color: rgb(216, 250, 226);}
+.L1-light,.L2-light,.L3-light,.L4-light,.L5-light{
+     background-color: rgb(193, 207, 241);
+}    
+.L3,.L5{color:rgb(70, 154, 54);}
+.blackWhite { 
+    background-color: white;
+    color: black;
+    border-color: black;
+}
 
 .round
 {

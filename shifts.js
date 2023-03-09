@@ -41,6 +41,7 @@ const shiftKey = {
     ];
 // keeps date of what is shown
 let showDate;
+// let colorScheme = ""; // normal
 
 function dateToString(date){
     return  date.toISOString().slice(0,10);
@@ -242,13 +243,100 @@ function showEverything(divId,day=showDate,color=1,mode=1) {
 // and first is a class of functions that creates that array
 // for 1 day or a week or fofr one week of worker
 
-function createHTMLTable(tabelka){
+// create structure for createHTMLTable
+// full week all workers
+function workWeek(day) {  //remove
+    // heqaders for th
+    // date and name of weekday
+    let dayDate = new Date(day);
+    const dayOfWeek=dayDate.getDay();
+    let noOfWeeks = shiftsWeek.length;
+    let weekNo = calcWeekNo(dayDate,noOfWeeks); // returns no of week
+
+    // calculate sunday using day0 and dayOfWeek
+    let sunday = new Date(day);
+    sunday.setDate(dayDate.getDate()-dayOfWeek);
+    // const nameOfDay = weekDays[dayOfWeek]; 
+    let myHeaders = ["Worker"];
+    //for 7 days of the week
+    for (let i =0;i<7;i++){
+        let dateForDay = new Date();
+        dateForDay.setDate(sunday.getDate()+i);
+        date = dateToString(dateForDay);
+        // second part of the string will be a part of link?
+        myHeaders.push(weekDays[i][1]+":"+date);
+    }
+     
+    let table = [myHeaders];
+    for (i=0;i<shiftsWeek.length;i++){
+        let index = i-weekNo;
+        // worker moved by week number 
+        if (index < 0){
+            index = workers.length+index;
+        }
+
+        let line = [workers[index]];
+
+        for (j=0;j<shiftsWeek[i].length; j++){
+            line.push(shiftsWeek[i][j]);
+        }   
+        
+        table.push(line);
+    }
+    // ,nameOfDay[1]+":"+day];
+    // workers as first column
+    // shift for a day
+
+    return table;
+}
+// 1 week all workers
+
+// 1 week 1 worker
+
+// create HTML table from structure ?
+
+function createHTMLTable(table,colorScheme=""){
     let myTable  = "<table>";
     // needs TH headers part
-    
+    let myHeaders = "<tr>";
+    for (i=0;i<table[0].length;i++){
+        let date = table[0][i].slice(table[0][i].indexOf(":")+1);
+        myHeaders += '<th onclick="newDay(\''+date+'\');" ';
+        myHeaders += 'class="'+colorScheme+'">';
+        myHeaders += table[0][i].replace(":","<br>");
+        myHeaders += "</th>";
+    }
+    myHeaders += "</tr>";
+    myTable += myHeaders;
 
+    // the rest of the table
+    for (i=1;i<table.length;i++){
+        myTable += "<tr>";
+        // worker
+        myTable += "<td class='t-button "+colorScheme+"'>";
+        myTable += table[i][0];
+        myTable += "</td>";
+
+        // shift
+        
+        for (j=1;j<table[i].length;j++){
+            // let colorClass = colorScheme+" "+table[i][j];
+            let colorClass = table[i][j]+colorScheme;
+            myTable += "<td class='"+colorClass+"'>";
+            myTable += shiftKey[table[i][j]];
+            myTable += "</td>";
+        }
+        myTable += "</tr>";
+    }
     myTable += "</table>";
     return myTable;
+}
+
+function showWeek(day,divId,colorScheme){
+    const targetDiv = document.getElementById(divId);
+
+    targetDiv.innerHTML = createHTMLTable(workWeek(day),colorScheme);
+    targetDiv.style.display = "block";
 }
 
 function setNewDay() {
@@ -256,17 +344,21 @@ function setNewDay() {
     newDay(day);
 }
 function showInBlack() {
-    showEverything("week",showDate,0,1);
+    // showEverything("week",showDate,0,1);
+    // colorScheme = "blackWhite ";
+    // space in colorScheme blackWhite is important as it overrides other schemes
+    showWeek(showDate,"week"," blackWhite");
 }
 function showInColor1() {
-    showEverything("week",showDate,1,1);
+    // showEverything("week",showDate,1,1);
+    showWeek(showDate,"week","-light");
+
 }
 
 /** Method triggered by form (button or change of date) */
 function newDay(day) {
-    // let day = document.getElementById("shiftDate").value;
     showShift(day);
-    showEverything("week",day,1,1);
-    // showShiftWeek(day);
-    
+
+   //new way :
+    showWeek(day,"week");
 }
