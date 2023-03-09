@@ -62,24 +62,26 @@ td.today
 }
 #week 
 {
-    display: none;
+    display: block;
 }
 
 /* /* */
  /* @media screen and (orientation: landscape) */
 
-@media screen and (max-width: 460px)
+
+
+/* @media screen and (max-width: 2000px)
  {
-    #week {display: none;}
+    #week {display: block;}
     #info {display: block;}
-}/* */
-@media screen and (max-width: 860px)
+} */
+@media screen and (max-width: 1200px)
  {
     #week {display: block;}
     #info {display: none;}
 }
-@media screen and (max-width: 2000px)
+@media screen and (max-width: 870px)
  {
-    #week {display: block;}
+    #week {display: none;}
     #info {display: block;}
-}
+}/* */

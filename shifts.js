@@ -41,7 +41,7 @@ const shiftKey = {
     ];
 // keeps date of what is shown
 let showDate;
-// let colorScheme = ""; // normal
+let colorScheme = ""; // normal
 
 function dateToString(date){
     return  date.toISOString().slice(0,10);
@@ -56,7 +56,8 @@ function start()
     showDate = dateToString(today);
     document.getElementById("shiftDate").value = today.toISOString().slice(0,10);
 
-    showShift(today.toISOString().slice(0,10));
+    // showShift(today.toISOString().slice(0,10));
+    setNewDay();
 
     document.getElementById("shiftDate").addEventListener("change",setNewDay);
     document.getElementById("black").addEventListener("click",showInBlack);
@@ -255,13 +256,16 @@ function workWeek(day) {  //remove
 
     // calculate sunday using day0 and dayOfWeek
     let sunday = new Date(day);
-    sunday.setDate(dayDate.getDate()-dayOfWeek);
+    sunday.setDate(sunday.getDate()-dayOfWeek);
     // const nameOfDay = weekDays[dayOfWeek]; 
-    let myHeaders = ["Worker"];
+    let myHeaders = ["Name"];
     //for 7 days of the week
     for (let i =0;i<7;i++){
-        let dateForDay = new Date();
-        dateForDay.setDate(sunday.getDate()+i);
+        let dateForDay = new Date(dateToString(sunday));
+        // console.log(day+">>>"+i+"\n"+dateForDay);
+        dateForDay.setDate(dateForDay.getDate()+i);
+        // console.log(dateForDay);
+        // console.log(sunday);
         date = dateToString(dateForDay);
         // second part of the string will be a part of link?
         myHeaders.push(weekDays[i][1]+":"+date);
@@ -295,7 +299,7 @@ function workWeek(day) {  //remove
 
 // create HTML table from structure ?
 
-function createHTMLTable(table,colorScheme=""){
+function createHTMLTable(table){
     let myTable  = "<table>";
     // needs TH headers part
     let myHeaders = "<tr>";
@@ -332,11 +336,34 @@ function createHTMLTable(table,colorScheme=""){
     return myTable;
 }
 
-function showWeek(day,divId,colorScheme){
+function showWeek(day,divId){
     const targetDiv = document.getElementById(divId);
 
-    targetDiv.innerHTML = createHTMLTable(workWeek(day),colorScheme);
-    targetDiv.style.display = "block";
+    targetDiv.innerHTML = createHTMLTable(workWeek(day));
+    // targetDiv.style.display = "block";
+}
+
+// extrakts 1 day from workers table
+// numOfDay is 0-6 days of week
+function getDay(week,numOfDay){
+    const dayNum = numOfDay+1; // 0 is for worker
+    let day = [["Name",week[0][dayNum]]];
+
+    for (i=1; i<week.length; i++){
+        day.push([week[i][0],week[i][dayNum]]);
+    }
+
+    return day;
+}
+// builds html table for 1 day
+function showDay(day,divId){
+    const targetDiv = document.getElementById(divId);
+    // what day we need?
+    let dayDate = new Date(day);
+    const numOfDay = dayDate.getDay();
+    // extract one day
+    targetDiv.innerHTML = createHTMLTable(getDay(workWeek(day),numOfDay));
+
 }
 
 function setNewDay() {
@@ -345,20 +372,27 @@ function setNewDay() {
 }
 function showInBlack() {
     // showEverything("week",showDate,0,1);
-    // colorScheme = "blackWhite ";
+    // set global variable of colors for tables
+    colorScheme = " blackWhite";
     // space in colorScheme blackWhite is important as it overrides other schemes
-    showWeek(showDate,"week"," blackWhite");
+    showDay(showDate,"info");
+    showWeek(showDate,"week");
 }
 function showInColor1() {
     // showEverything("week",showDate,1,1);
-    showWeek(showDate,"week","-light");
+    // set global variable of colors for tables
+    colorScheme = "-light";
+    showDay(showDate,"info");
+    showWeek(showDate,"week");
 
 }
 
+// add 2 color schemes : normal and white+color
+
 /** Method triggered by form (button or change of date) */
 function newDay(day) {
-    showShift(day);
-
+    // showShift(day);
+    showDay(day,"info");
    //new way :
     showWeek(day,"week");
 }
