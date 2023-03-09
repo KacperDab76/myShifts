@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="shifts.css" />
 </head>
 <body onload="start();">
-    <div id="form">
+    <div id="form" class="box">
         <form action="" onsubmit="return false;" class="">
             <label for="shiftDate">Day</label>
             <input type="date" name="shiftDate" id="shiftDate" />
@@ -21,10 +21,12 @@
         <div class="round" id='black'></div>
         <div id="color1" class="round"></div>
     </div>
-    <div id="info">
-        day
+    <div id="wrapper" class="box">
+        <div id="info">
+            day
+        </div>
+        <div id="week">week</div>
     </div>
-    <div id="week">week</div>
     <script src="shifts.js"></script>
     <!-- <script src="shiftsold.js"></script> -->
 
