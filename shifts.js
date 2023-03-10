@@ -197,6 +197,17 @@ function getDay(week,numOfDay){
 
     return day;
 }
+function getCompactDay(week,numOfDay){
+    const dayNum = numOfDay+1; // 0 is for worker
+    let day = [["",week[0][dayNum]]];
+
+    for (i=1; i<week.length; i++){
+        day.push(["",week[i][dayNum]+"<br>"+week[i][0]]);
+    }
+
+    return day;
+}
+
 // builds html table for 1 day
 function showDay(day,divId){
     const targetDiv = document.getElementById(divId);
@@ -204,6 +215,7 @@ function showDay(day,divId){
     let dayDate = new Date(day);
     const numOfDay = dayDate.getDay();
     // extract one day
+    // targetDiv.innerHTML = createHTMLTable(getCompactDay(workWeek(day),numOfDay));
     targetDiv.innerHTML = createHTMLTable(getDay(workWeek(day),numOfDay));
 
 }
@@ -214,8 +226,9 @@ function setNewDay() {
     let day = document.getElementById("shiftDate").value;
     newDay(day);
 }
+
+// Functions to change color scheme
 function showInBlack() {
-    // showEverything("week",showDate,0,1);
     // set global variable of colors for tables
     colorScheme = " blackWhite";
     // space in colorScheme blackWhite is important as it overrides other schemes
@@ -223,7 +236,6 @@ function showInBlack() {
     showWeek(showDate,"week");
 }
 function showInColor() {
-    // showEverything("week",showDate,1,1);
     // set global variable of colors for tables
     colorScheme = "";
     showDay(showDate,"info");
@@ -231,14 +243,13 @@ function showInColor() {
 
 }
 function showInColor1() {
-    // showEverything("week",showDate,1,1);
     // set global variable of colors for tables
     colorScheme = "-light";
     showDay(showDate,"info");
     showWeek(showDate,"week");
 
 }function showInColor2() {
-    // showEverything("week",showDate,1,1);
+
     // set global variable of colors for tables
     colorScheme = "-whiteColor";
     showDay(showDate,"info");
