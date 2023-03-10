@@ -92,3 +92,8 @@ td.today
     #week {display: none;}
     #info {display: block;}
 }/* */
+@media screen and (max-width: 500px)
+ {
+    #week {display: none;}
+    #info {display: block;}
+}

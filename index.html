@@ -9,17 +9,21 @@
     <link rel="stylesheet" href="shifts.css" />
 </head>
 <body onload="start();">
-    <div id="form" class="box">
-        <form action="" onsubmit="return false;" class="">
-            <label for="shiftDate">Day</label>
-            <input type="date" name="shiftDate" id="shiftDate" />
-            <button onclick="setNewDay();"> Show Shift</button>
-            
-        </form>
-        <a href="./newSh.html">NEw shifts</a>
-        <a href="./Shifts.html">one page</a>
-        <div class="round" id='black'></div>
-        <div id="color1" class="round"></div>
+    <div class="box" id="topWrapper">
+        <div id="form" class="box">
+            <form action="" onsubmit="return false;" class="">
+                <label for="shiftDate">Day</label>
+                <input type="date" name="shiftDate" id="shiftDate" />
+                <button onclick="setNewDay();"> Show Shift</button>
+                
+            </form>
+        </div>
+        <div id="colors" class="box">
+            <div class="round" id='black'></div>
+            <div id="color1" class="round"></div>
+            <div id="color" class="round"></div>
+
+        </div>
     </div>
     <div id="wrapper" class="box">
         <div id="info">
