@@ -44,11 +44,27 @@ td.today
 .L1-light,.L2-light,.L3-light,.L4-light,.L5-light{
      background-color: rgb(193, 207, 241);
 }    
+.R-whiteColor{ background-color: white;color: green;}
+.D1-whiteColor,.D2-whiteColor,.D3-whiteColor{ 
+    background-color: white;
+    color: orange;
+}    
+.P1-whiteColor { background-color: white;color:rgb(137, 180, 94);}
+.P2-whiteColor {background-color: white;color:rgb(113, 172, 25)}
+.L1-whiteColor,.L2-whiteColor,.L3-whiteColor,.L4-whiteColor,.L5-whiteColor{
+     background-color: white;
+     color: blue;
+}    
 .L3,.L5{color:rgb(70, 154, 54);}
 .blackWhite { 
     background-color: white;
     color: black;
     border-color: black;
+}
+.-whiteColor{
+    background-color: white;
+    color: black;
+     
 }
 
 .round
@@ -67,32 +83,33 @@ td.today
 {
     background-color: blueviolet;
 }
-#week 
+#color2
 {
-    display: block;
+    background-color: white;
+    border: 2px solid crimson;
 }
 
-/* /* */
- /* @media screen and (orientation: landscape) */
+#color
+{
+    background-color: rgb(135, 192, 222);
+}
 
+#week {display: block;}
+#info {display: block;}
 
-
-/* @media screen and (max-width: 2000px)
- {
-    #week {display: block;}
-    #info {display: block;}
-} */
-@media screen and (max-width: 1200px)
+@media all and (max-width: 1200px) and (orientation: landscape)
  {
     #week {display: block;}
     #info {display: none;}
 }
-@media screen and (max-width: 870px)
+
+@media all and (max-width: 800px) and (orientation: landscape)
  {
-    #week {display: none;}
-    #info {display: block;}
-}/* */
-@media screen and (max-width: 500px)
+    #week {display: block;size: 20px}
+    #info {display: none;}
+}
+
+@media all and (orientation: portrait),(max-width: 576px)
  {
     #week {display: none;}
     #info {display: block;}

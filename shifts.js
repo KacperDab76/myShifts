@@ -61,7 +61,9 @@ function start()
 
     document.getElementById("shiftDate").addEventListener("change",setNewDay);
     document.getElementById("black").addEventListener("click",showInBlack);
+    document.getElementById("color").addEventListener("click",showInColor);
     document.getElementById("color1").addEventListener("click",showInColor1);
+    document.getElementById("color2").addEventListener("click",showInColor2);
 
 }
 
@@ -206,6 +208,8 @@ function showDay(day,divId){
 
 }
 
+
+
 function setNewDay() {
     let day = document.getElementById("shiftDate").value;
     newDay(day);
@@ -218,6 +222,14 @@ function showInBlack() {
     showDay(showDate,"info");
     showWeek(showDate,"week");
 }
+function showInColor() {
+    // showEverything("week",showDate,1,1);
+    // set global variable of colors for tables
+    colorScheme = "";
+    showDay(showDate,"info");
+    showWeek(showDate,"week");
+
+}
 function showInColor1() {
     // showEverything("week",showDate,1,1);
     // set global variable of colors for tables
@@ -225,7 +237,15 @@ function showInColor1() {
     showDay(showDate,"info");
     showWeek(showDate,"week");
 
+}function showInColor2() {
+    // showEverything("week",showDate,1,1);
+    // set global variable of colors for tables
+    colorScheme = "-whiteColor";
+    showDay(showDate,"info");
+    showWeek(showDate,"week");
+
 }
+
 
 // add 2 color schemes : normal and white+color
 
