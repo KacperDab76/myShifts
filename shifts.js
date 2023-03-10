@@ -100,7 +100,7 @@ function workWeek(day) {  //remove
     let sunday = new Date(day);
     sunday.setDate(sunday.getDate()-dayOfWeek);
     // const nameOfDay = weekDays[dayOfWeek]; 
-    let myHeaders = ["Name"];
+    let myHeaders = [{classStyle:"",value: "Name"}];
     //for 7 days of the week
     for (let i =0;i<7;i++){
         let dateForDay = new Date(dateToString(sunday));
@@ -109,8 +109,12 @@ function workWeek(day) {  //remove
         // console.log(dateForDay);
         // console.log(sunday);
         date = dateToString(dateForDay);
+        let style = "";
+        if (i == dayOfWeek){
+            style = " today";
+        }
         // second part of the string will be a part of link?
-        myHeaders.push(weekDays[i][1]+":"+date);
+        myHeaders.push({classStyle:style,value:weekDays[i][1]+":"+date});
     }
      
     let table = [myHeaders];
@@ -121,10 +125,14 @@ function workWeek(day) {  //remove
             index = workers.length+index;
         }
 
-        let line = [workers[index]];
-
+        let line = [{classStyle:"",value:workers[index]}];
+ 
         for (j=0;j<shiftsWeek[i].length; j++){
-            line.push(shiftsWeek[i][j]);
+            let style = "";
+            if (j == dayOfWeek){
+                style = "today "; // space required
+            }
+            line.push({classStyle:style+shiftsWeek[i][j],value:shiftKey[shiftsWeek[i][j]]});
         }   
         
         table.push(line);
@@ -146,10 +154,10 @@ function createHTMLTable(table){
     // needs TH headers part
     let myHeaders = "<tr>";
     for (i=0;i<table[0].length;i++){
-        let date = table[0][i].slice(table[0][i].indexOf(":")+1);
+        let date = table[0][i].value.slice(table[0][i].value.indexOf(":")+1);
         myHeaders += '<th onclick="newDay(\''+date+'\');" ';
-        myHeaders += 'class="'+colorScheme+'">';
-        myHeaders += table[0][i].replace(":","<br>");
+        myHeaders += 'class="'+colorScheme+table[0][i].classStyle+'">';
+        myHeaders += table[0][i].value.replace(":","<br>");
         myHeaders += "</th>";
     }
     myHeaders += "</tr>";
@@ -160,16 +168,16 @@ function createHTMLTable(table){
         myTable += "<tr>";
         // worker
         myTable += "<td class='t-button "+colorScheme+"'>";
-        myTable += table[i][0];
+        myTable += table[i][0].value;
         myTable += "</td>";
 
         // shift
         
         for (j=1;j<table[i].length;j++){
             // let colorClass = colorScheme+" "+table[i][j];
-            let colorClass = table[i][j]+colorScheme;
+            let colorClass = table[i][j].classStyle+colorScheme;
             myTable += "<td class='"+colorClass+"'>";
-            myTable += shiftKey[table[i][j]];
+            myTable += table[i][j].value;
             myTable += "</td>";
         }
         myTable += "</tr>";
@@ -189,7 +197,7 @@ function showWeek(day,divId){
 // numOfDay is 0-6 days of week
 function getDay(week,numOfDay){
     const dayNum = numOfDay+1; // 0 is for worker
-    let day = [["Name",week[0][dayNum]]];
+    let day = [[{classStyle:"",value:"Name"},week[0][dayNum]]];
 
     for (i=1; i<week.length; i++){
         day.push([week[i][0],week[i][dayNum]]);
@@ -199,10 +207,12 @@ function getDay(week,numOfDay){
 }
 function getCompactDay(week,numOfDay){
     const dayNum = numOfDay+1; // 0 is for worker
-    let day = [["",week[0][dayNum]]];
+    let day = [[{classStyle:"",value:""},week[0][dayNum]]];
 
     for (i=1; i<week.length; i++){
-        day.push(["",week[i][dayNum]+"<br>"+week[i][0]]);
+        const newValue = week[i][dayNum].value+"<br>"+week[i][0].value;
+        const newField = {classStyle:week[i][dayNum].classStyle,value:newValue};
+        day.push([{classStyle:"",value:""},newField]);
     }
 
     return day;
@@ -215,8 +225,8 @@ function showDay(day,divId){
     let dayDate = new Date(day);
     const numOfDay = dayDate.getDay();
     // extract one day
-    // targetDiv.innerHTML = createHTMLTable(getCompactDay(workWeek(day),numOfDay));
-    targetDiv.innerHTML = createHTMLTable(getDay(workWeek(day),numOfDay));
+    targetDiv.innerHTML = createHTMLTable(getCompactDay(workWeek(day),numOfDay));
+    // targetDiv.innerHTML = createHTMLTable(getDay(workWeek(day),numOfDay));
 
 }
 
