@@ -20,6 +20,7 @@ td{
     padding: 1px 15px;
     margin: 2px;
     background-color: rgb(135, 192, 222);
+    height: 40px;
 }
 
 td.today
@@ -34,13 +35,14 @@ td.today
 .D1,.D2,.D3{ background-color: lemonchiffon;}    
 .P1 { background-color: darkseagreen;color: rgb(152, 52, 52)}
 .P2 {background-color: rgb(136, 187, 136);}
+.P3,.P4 { background-color: darkseagreen;color: rgb(52, 105, 152)}
 
 .R-light{ background-color: rgb(216, 250, 226);}
 .D1-light,.D2-light,.D3-light{ 
     background-color: rgb(230, 232, 178);
 }    
 .P1-light { background-color: rgb(216, 250, 226);}
-.P2-light {background-color: rgb(216, 250, 226);}
+.P2-light,.P3-light,.P4-loght {background-color: rgb(216, 250, 226);}
 .L1-light,.L2-light,.L3-light,.L4-light,.L5-light{
      background-color: rgb(193, 207, 241);
 }    
@@ -49,8 +51,11 @@ td.today
     background-color: white;
     color: orange;
 }    
-.P1-whiteColor { background-color: white;color:rgb(137, 180, 94);}
-.P2-whiteColor {background-color: white;color:rgb(113, 172, 25)}
+.P1-whiteColor { background-color: white;color:rgb(157, 216, 19);}
+.P2-whiteColor {background-color: white;color:rgb(63, 92, 18)}
+.P3-whiteColor {background-color: white;color:rgb(25, 172, 42)}
+.P4-whiteColor {background-color: white;color:rgb(25, 172, 69)}
+
 .L1-whiteColor,.L2-whiteColor,.L3-whiteColor,.L4-whiteColor,.L5-whiteColor{
      background-color: white;
      color: blue;

@@ -1,23 +1,50 @@
 // Author : Kacper Dabrowski
 
 // arrays with inforamtions of shifts
-// let workers = ["A.Carroll","K.Dabrowski","M.Creech","J.Walsh","G.O`Driscoll","J.Norberg","W.Cronin","P.Greene"];
 
-let workers = ["A.C","K.D","M.C","J.W","G.O`D","J.N","W.C","P.G"];	
+let workers = ["B.C.","G.O`D","J.N","W.C","P.G","A.C","K.D","M.C","J.W"];	
+// const shiftKey = {
+//     "R": "Rest Day",
+// 	"L1": "19.00-4.00",
+// 	"L2": "18.00-4.00",
+// 	"L3": "16.00-4.00",
+// 	"L4": "20.00-6.00",
+// 	"L5": "16.00-2.00",
+// 	"D1": "8.00-16.00",
+// 	"D2": "8.00-15.00",
+// 	"D3": "10.00-18.00",
+// 	"P1": "Priorytet 1",
+// 	"P2": "Priorytet 2"
+// 	};
 const shiftKey = {
     "R": "Rest Day",
-	"L1": "19.00-4.00",
-	"L2": "18.00-4.00",
-	"L3": "16.00-4.00",
-	"L4": "20.00-6.00",
+	"L1": "18.00-4.00",
+	"L2": "18.00-2.00",
+	"L3": "17.00-2.00",
+	"L4": "19.00-4.00",
 	"L5": "16.00-2.00",
-	"D1": "8.00-16.00",
-	"D2": "8.00-15.00",
-	"D3": "10.00-18.00",
-	"P1": "Priorytet 1",
-	"P2": "Priorytet 2"
+    "L6": "17.00-3.00",
+	"D1": "9.00-18.00",
+	"D2": "7.00-16.00",
+	"D3": "8.00-17.00",
+	"P1": "Rest Day: P1",
+	"P2": "Rest Day: P2",
+	"P3": "Rest Day: P3",
+	"P4": "Rest Day: P4",
+	"P5": "Rest Day: <br>P2 drop days"
 	};
-
+    const shiftsWeek = [
+        ["R", "D1", "L1", "L1", "L2", "P3", "P2"],
+        ["P1", "P2", "D1", "D1", "L1", "L2", "P3"],
+        ["P2", "P1", "L1", "L4", "R", "D1", "L1"],
+        ["L1", "L1", "P2", "P2", "P1", "L1", "L1"],
+        ["L3", "L1", "P3", "R", "D1", "D2", "D1"],
+        ["D3", "R", "L4", "L1", "L4", "P2", "P4"],
+        ["R", "D2", "D2", "D2", "D2", "P1", "P1"],
+        ["R", "L1", "L2", "L2", "R", "L1", "L4"],
+        ["L1", "L4", "P1", "P1", "L1", "L4", "R"]
+    ];
+    /*
     const shiftsWeek = [
         ["P2", "L1", "L2", "L2", "L2", "P2", "P1"],
         ["P1", "R", "P2", "L2", "L1", "L2", "L3"],
@@ -28,7 +55,9 @@ const shiftKey = {
         ["D1", "D1", "D1", "D1", "D2", "P1", "P2"],
         ["R", "P2", "P1", "L1", "L2", "L2", "L4"]
     ];
-    const startingDate =  "2021-10-03";
+    */
+    // const startingDate =  "2021-10-03";
+    const startingDate =  "2023-07-16";
     
     const weekDays = [
         ["Sun","Sunday"],
