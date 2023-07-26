@@ -27,22 +27,22 @@ const shiftKey = {
 	"D1": "9.00-18.00",
 	"D2": "7.00-16.00",
 	"D3": "8.00-17.00",
-	"P1": "Rest Day: P1",
-	"P2": "Rest Day: P2",
-	"P3": "Rest Day: P3",
-	"P4": "Rest Day: P4",
+	"P1": "Priority 1",
+	"P2": "Priority 2",
+	"P3": "Priority 3",
+	"P4": "Priority 4",
 	"P5": "Rest Day: <br>P2 drop days"
 	};
     const shiftsWeek = [
-        ["R", "D1", "L1", "L1", "L2", "P3", "P2"],
-        ["P1", "P2", "D1", "D1", "L1", "L2", "P3"],
+        ["R", "D1", "L1", "L1", "L2", "P3", "P1"],
+        ["P1", "R", "D1", "D1", "L1", "L2", "P4"],
         ["P2", "P1", "L1", "L4", "R", "D1", "L1"],
-        ["L1", "L1", "P2", "P2", "P1", "L1", "L1"],
-        ["L3", "L1", "P3", "R", "D1", "D2", "D1"],
-        ["D3", "R", "L4", "L1", "L4", "P2", "P4"],
-        ["R", "D2", "D2", "D2", "D2", "P1", "P1"],
-        ["R", "L1", "L2", "L2", "R", "L1", "L4"],
-        ["L1", "L4", "P1", "P1", "L1", "L4", "R"]
+        ["L1", "L1", "P3", "P2", "P1", "L1", "L1"],
+        ["L3", "L1", "P1", "R", "D1", "D2", "D1"],
+        ["D3", "P2", "L4", "L1", "L4", "P2", "P2"],
+        ["R", "D2", "D2", "D2", "D2", "P1", "P3"],
+        ["P3", "L1", "L2", "L2", "R", "L1", "L4"],
+        ["L1", "L4", "P2", "P1", "L1", "L4", "R"]
     ];
     /*
     const shiftsWeek = [
@@ -129,7 +129,9 @@ function workWeek(day) {  //remove
     let sunday = new Date(day);
     sunday.setDate(sunday.getDate()-dayOfWeek);
     // const nameOfDay = weekDays[dayOfWeek]; 
-    let myHeaders = [{classStyle:"",value: "Name"}];
+    let myHeaders = [{classStyle:"",value: "Name"},
+                    {classStyle:"",value: "Shift"}
+    ];
     //for 7 days of the week
     for (let i =0;i<7;i++){
         let dateForDay = new Date(dateToString(sunday));
@@ -145,6 +147,7 @@ function workWeek(day) {  //remove
         // second part of the string will be a part of link?
         myHeaders.push({classStyle:style,value:weekDays[i][1]+":"+date});
     }
+    myHeaders.push({classStyle:"",value: "Shift"});
      
     let table = [myHeaders];
     for (i=0;i<shiftsWeek.length;i++){
@@ -154,7 +157,9 @@ function workWeek(day) {  //remove
             index = workers.length+index;
         }
 
-        let line = [{classStyle:"",value:workers[index]}];
+        let line = [{classStyle:"",value:workers[index]},
+                    {classStyle:"",value: i+1}
+        ];
  
         for (j=0;j<shiftsWeek[i].length; j++){
             let style = "";
@@ -163,6 +168,7 @@ function workWeek(day) {  //remove
             }
             line.push({classStyle:style+shiftsWeek[i][j],value:shiftKey[shiftsWeek[i][j]]});
         }   
+        line.push({classStyle:"",value: i+1});
         
         table.push(line);
     }
@@ -184,7 +190,10 @@ function createHTMLTable(table){
     let myHeaders = "<tr>";
     for (i=0;i<table[0].length;i++){
         let date = table[0][i].value.slice(table[0][i].value.indexOf(":")+1);
-        myHeaders += '<th onclick="newDay(\''+date+'\');" ';
+        myHeaders += '<th ';
+        // 0 - name s 1 and 9 shift
+        if (i>1 && i<9)
+            myHeaders += 'onclick="newDay(\''+date+'\');" ';
         myHeaders += 'class="'+colorScheme+table[0][i].classStyle+'">';
         myHeaders += table[0][i].value.replace(":","<br>");
         myHeaders += "</th>";
@@ -235,7 +244,7 @@ function getDay(week,numOfDay){
     return day;
 }
 function getCompactDay(week,numOfDay){
-    const dayNum = numOfDay+1; // 0 is for worker
+    const dayNum = numOfDay+2; // 0 is for worker 1 is for shift
     let day = [[{classStyle:"",value:""},week[0][dayNum]]];
 
     for (i=1; i<week.length; i++){
