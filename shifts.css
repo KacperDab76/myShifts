@@ -30,6 +30,8 @@ td.today
     border-color: blue;
 }
 
+.D {background-color: burlywood;}
+.L {background-color: blue;}
  
 .R{ background-color: rgb(216, 250, 226);}
 .D1,.D2,.D3{ background-color: lemonchiffon;}    
@@ -78,6 +80,13 @@ td.today
     width: 20px;
     height: 20px;
     border-radius: 50%;
+}
+.newShiftsButton{
+    background-color: brown;
+    color:rgb(157, 216, 19);
+    border: solid 2px black;
+    padding: 2px;
+    margin: 3px;
 }
 #black
 {

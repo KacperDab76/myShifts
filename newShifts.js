@@ -31,9 +31,11 @@ const shiftKey = {
 	"P2": "Priority 2",
 	"P3": "Priority 3",
 	"P4": "Priority 4",
-	"P5": "Rest Day: <br>P2 drop days"
+	"P5": "Rest Day: <br>P2 drop days",
+    "L": "Late",
+    "D": "Day"
 	};
-    const shiftsWeek = [
+    const originalWeek = [
         ["R", "D1", "L1", "L1", "L2", "P3", "P1"],
         ["P1", "R", "D1", "D1", "L1", "L2", "P4"],
         ["P2", "P1", "L1", "L4", "R", "D1", "L1"],
@@ -44,6 +46,7 @@ const shiftKey = {
         ["P3", "L1", "L2", "L2", "R", "L1", "L4"],
         ["L1", "L4", "P2", "P1", "L1", "L4", "R"]
     ];
+    let shiftsWeek = originalWeek;
     /*
     const shiftsWeek = [
         ["P2", "L1", "L2", "L2", "L2", "P2", "P1"],
@@ -93,7 +96,12 @@ function start()
     document.getElementById("color").addEventListener("click",showInColor);
     document.getElementById("color1").addEventListener("click",showInColor1);
     document.getElementById("color2").addEventListener("click",showInColor2);
+    // add clicks to new shofts buttons
+    document.getElementById("newSh1").addEventListener("click",newShift1);
 
+
+    // hide days div
+    document.getElementById("info").style.display="none";
 }
 
 
@@ -381,4 +389,57 @@ function showNewDay(){
     show7Days(showDate);
    //new way :
     showWeek(showDate,"week");
+}
+
+function newShift1() {
+    newShift(0);
+}
+
+function newShift(num){
+    let newWeek = [
+        ["RNNNNRR",
+        "RNNNRNR",
+        "RDDDDDR",
+        "RNNNRRD",
+        "DRRRNNN",
+        "NRRRNNN",
+        "NRRRNNN",
+        "RDDDDDR",
+        "NNNNRRR"
+
+        ]
+
+    ];
+
+    let newShiftTable = [];
+    for (let i =0; i < newWeek[num].length; i++){
+        newShiftTable.push(convert(newWeek[num][i]));
+    }
+    console.log(newShiftTable);
+    shiftsWeek = newShiftTable;
+    showWeek(showDate,"week");
+
+}
+
+function convert(week){
+    console.log(week.length)
+    if (week.length == 7){
+        console.log(week);
+ 
+        let roster = [];
+        for (let i =0; i<week.length; i++){
+            // console.log("shift: "+week[i]);
+            roster.push(translate(week[i]));
+        }
+        // console.log(roster);
+        return roster;
+    }
+
+    return null;
+}
+
+function translate(shift){
+    let table = {"N":"L","D":"D","R":"R"};
+    // console.log(shift);
+    return table[shift];
 }
