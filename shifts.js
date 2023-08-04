@@ -306,7 +306,15 @@ function show7Days(day){
 // function changeDay shows different div or changes whole week
 function changeDay(numOfDay){
     if (numOfDay < 0 || numOfDay > 6){
-        console.log("new week "+numOfDay)
+        console.log("new week "+numOfDay);
+        const newDate = new Date(showDate);
+        let move = numOfDay-newDate.getDay();
+        newDate.setDate(newDate.getDate()+move);
+        console.log(dateToString(newDate));
+        // change caledar ??
+        const calendar = document.getElementById("shiftDate");
+        calendar.value = dateToString(newDate);
+        newDay(dateToString(newDate));
     }
     else {
         show1of7days(numOfDay);
@@ -377,7 +385,7 @@ function newDay(day) {
 }
 
 function showNewDay(){
-    console.log(showDate);
+     console.log(showDate);
     show7Days(showDate);
    //new way :
     showWeek(showDate,"week");
