@@ -2884,7 +2884,7 @@ var app = (function () {
     	// date/s 
     	// workers in order
     	// shiftWeek
-    	var patternSelector = 0;
+    	var patternSelector = 1;
 
     	// array of objects with information about week shift
     	function createWeekPattern(patternSelector = 0) {
