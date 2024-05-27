@@ -3213,7 +3213,7 @@ var app = (function () {
     const app = new App({
     	target: document.body,
     	props: {
-    		workers: ["B.C.","G.O`D","J.N","W.C","P.G","A.C","K.D","M.C","J.W"],
+    		workers: ["A.O`C.","G.O`D","J.N","W.C","P.G","A.C","K.D","M.C","J.W"],
     		shiftKey: [
     			{
     				"R": "Rest Day",
